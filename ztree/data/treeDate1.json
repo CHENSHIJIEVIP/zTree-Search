@@ -1,0 +1,174 @@
+[
+	{
+		"id":0,
+		"name":"所有可选择机构",
+		"isParent":"true",
+		"open":true
+	},
+	{
+		"id":1,
+		"pId":0,	
+	    "name": "集团总部",
+	    "isParent":true,
+	    "children":[
+    			{
+				    id:3,
+				   	pId:1,
+				    name: "管委会"
+				    
+				},
+				{
+					id:4,
+					pId:1,
+				    name: "战略发展部"
+				},
+				{
+					id:5,
+					pId:1,
+				    name: "办公室",
+				    open: false,
+				    // "isParent":true
+				    "children":[
+				    ]
+				},
+				{
+					id:6,
+					pId:1,
+				    name: "品牌传播部"
+				},
+				{
+					id:7,
+					pId:1,
+				    name: "采购物控部",
+				    open: false,
+				    "children":[
+				    ]
+				},
+				{
+					id:8,
+					pId:1,
+				    name: "财务精算企划部"
+				},
+				{
+					id:9,
+					pId:1,
+				    name: "财务会计部",
+				    "children":[
+				    ]
+				},
+				{
+					id:10,
+					pId:1,
+				    name: "风险管理部"
+				},
+				{
+					id:11,
+					pId:1,
+				    name: "投注管理部"
+				},
+				{
+					id:12,
+					pId:1,
+				    name: "数据信息中心",
+				    "children":[
+				    ]
+				},
+				{
+					id:13,
+					pId:1,
+				    name: "运营中心",
+				    "children":[
+				    ]
+				},
+				{
+					id:14,
+					pId:1,
+				    name: "人力资源部"
+				},
+				{
+					id:15,
+					pId:1,
+				    name: "泰康商学院"
+				},
+				{
+					id:16,
+					pId:1,
+				    name: "珞珈研究院"
+				},
+				{
+					id:17,
+					pId:1,
+				    name: "法律合规部"
+				},
+				{
+					id:18,
+					pId:1,
+				    name: "稽核中心"
+				},
+				{
+					id:19,
+					pId:1,
+				    name: "董事会办公室"
+				},
+				{
+					id:20,
+					pId:1,
+				    name: "党委办公室"
+				},
+				{
+					id:21,
+					pId:1,
+				    name: "高客部",
+				    "children":[
+				    ]
+				},
+				{
+					id:22,
+					pId:1,
+				    name: "泰康空间"
+				},
+				{
+					id:23,
+					pId:1,
+				    name: "其他",
+				    "children":[
+				    ]
+				},
+				{
+					id:19,
+					pId:1,
+				    name: "董事会办公室"
+				},
+				{
+					id:20,
+					pId:1,
+				    name: "党委办公室"
+				},
+				{
+					id:21,
+					pId:1,
+				    name: "高客部",
+				    "children":[
+				    ]
+				},
+				{
+					id:22,
+					pId:1,
+				    name: "泰康空间"
+				},
+				{
+					id:23,
+					pId:1,
+				    name: "其他",
+				    "children":[
+				    ]
+				},
+			]
+	},
+	{
+		"id":2,
+		"pId":0,
+	    "name": "通讯簿",
+	    "isParent":true
+	}
+]

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>zTree选择人员</title>
+	<!-- ztree插件 -->
+	<link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="js/plugs/jquery.min.js"></script>
+    <script type="text/javascript" src="js/plugs/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="js/plugs/jquery.ztree.exhide-3.5.min.js"></script>
+    <!-- ui插件 -->
+ 	<link rel="stylesheet" href="js/plugs/jquery-confirm.min.css" type="text/css">
+    <script type="text/javascript" src="js/plugs/jquery-confirm.min.js"></script>
+	<!-- 页面样式 -->
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+	<div class="wrap">
+		<h3 class="title">选择人员</h3>
+		<!-- 头部查询 -->
+		<div class="search">
+			<p class="keyword"><span>查询关键字:</span><input type="text" name="" id="kwSelect"></p>
+			<p class="way"><span>查询方式:</span>
+				<select name="" id="selChange" >
+					<option value="">按中文名称查询</option>
+				</select>
+			</p>
+			<p class="queryBtn"><input type="button" value="查询" id="searchBtn"></p>
+		</div>
+		<!-- 中部主体功能 -->
+		<div class="main">
+			<div class="header">
+				<p class="adminUser">
+					<select name="" id="mechanismID" >
+						<!-- <option value="">集团总部</option> -->
+					</select>
+				</p>
+				<p class="userField">
+					<label>
+						<input type="checkbox" >包含外勤用户
+					</label>
+				</p>
+			</div>
+			<div class="content">
+				<!-- 树形结构区 -->
+				<div class="leftTree">
+					<!-- <span>所有可选择机构</span> -->
+			        <ul id="treeDemo" class="ztree"></ul>
+			        <!-- <ul id="tree-obj" class="ztree"></ul> -->
+				</div>
+				<div class="rightUser">
+					<div class="top clearfix">
+						<div class="editingArea">
+							<p>可选人员</p>
+							<div class="userBox" id="Selectable">
+							</div>
+						</div>
+						<div class="operation">
+							<input type="button" value="添加" id="addNode"><br>
+							<input type="button" value="全部添加" id="addNodeAll">
+						</div>
+					</div>
+					<div class="bottom clearfix">
+						<div class="editingArea">
+							<p>所选人员</p>
+							<div class="userBox" id="Choose">
+								<ul></ul>
+							</div>
+						</div>
+						<div class="operation-sel">
+							<input type="button" value="上移" id="moveNode"><br>
+							<input type="button" value="下移" id="downNode"><br>
+							<input type="button" value="删除" id="deleteNode"><br>
+							<input type="button" value="全部删除" id="deleteNodeAll">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 底部按钮 -->
+			<div class="footer">
+				<input type="button" value="确定" id="Determine">
+				<input type="button" value="取消">
+			</div>
+		</div>
+	</div>
+</body>
+	<!-- 页面js -->
+	<script type="text/javascript" src="js/index.js"></script>
+</html>

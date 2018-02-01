@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>测试</title>
+  <script src="js/jquery-1.4.4.min.js" type="text/javascript"></script>
+  <link href="css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css" />
+  <script src="js/jquery.ztree.core.js" type="text/javascript"></script>
+  <script src="js/jquery.ztree.exedit.js" type="text/javascript"></script>
+  <style>
+  /*公共样式*/
+  .left {
+    float: left;
+  }
+  
+  .right {
+    float: right;
+  }
+  /* 清楚浮动 */
+  
+  .clearfix:before,
+  .clearfix:after {
+    content: "";
+    display: table;
+  }
+  
+  .clearfix:after {
+    clear: both;
+  }
+  
+  .clearfix {
+    *zoom: 1;
+    /*IE/7/6*/
+    /*兼容IE6下的写法*/
+  }
+  .moveMenu{
+    width: 5%;
+    height: 180px;
+    float: left;
+    position: relative;
+    margin-top: 0 !important;
+  }
+  #toRight {
+    border-width: 10px;
+    border-color: #fff #fff #fff #80cb28;
+    border-style: solid;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  #toLeft {
+    border-width: 10px;
+    border-color: #fff #80cb28 #fff #fff;
+    border-style: solid;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+    .centerMenu {
+    width: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -15px;
+    margin-top: -25px;
+  }
+  #upProductLeft,
+  #upProductRight {
+    margin-left: 0px;
+    float: left;
+    border: 1px solid #ccc;
+    width: 44%;
+  }
+  </style>
+</head>
+<body>
+  <ul id="upProductLeft" class="moveProduct ztree">
+    
+  </ul>
+
+  <div class="moveMenu">
+    <div class="centerMenu clearfix">
+      <div id="toRight"></div>
+      <div id="toLeft"></div>
+    </div>
+  </div>
+
+  <ul id="upProductRight"  class="moveProduct ztree">
+
+  </ul>
+</body>
+<script>
+$(function () {
+      var zTreeObj;
+      var zTreeObj2;
+      var current;
+      var flag;
+      var setting = {
+        callback : {
+          onClick : click,
+          onRemove : onremove
+        }
+      };
+      var setting2 = {
+        callback : {
+          onClick : click2,
+          onRemove : onremove2
+        }
+      }
+      var zNodes = [{id:1,pId:0,name: "鞋靴",open:true},
+                    {id:2,pId:0,name: "酒类",open:true, children: [
+                      {id:21,pId:2,name: "中外名酒",open:true, children: [
+                        {id:211,pId:21,name: "收藏酒/陈年老酒"},
+                        {id:212,pId:21,name: "自营海外直采"},
+                        {id:213,pId:21,name:"赠品"},
+                        {id:214,pId:21,name:"白酒"},
+                        {id:215,pId:21,name:"黄酒/养生酒"},
+                        {id:216,pId:21,name:"洋酒"},
+                        {id:217,pId:21,name:"葡萄酒"},
+                        {id:218,pId:21,name:"啤酒"}
+                        ]},
+                      {id:22,pId:2,name: "名酒",open:true, children: [
+                         {id:221,pId:21,name: "收藏酒/陈年老酒"},
+                         {id:222,pId:21,name: "自营海外直采"},
+                         {id:223,pId:21,name:"赠品"},
+                         {id:224,pId:21,name:"白酒"},
+                         {id:225,pId:21,name:"黄酒/养生酒"},
+                         {id:226,pId:21,name:"洋酒"},
+                         {id:227,pId:21,name:"葡萄酒"},
+                         {id:228,pId:21,name:"啤酒"}
+                      ]}
+                     ]},
+                    {id:3,pId:0,name:"服饰内衣",open:true},
+                    {id:4,pId:0,name:"个护化妆",open:true},
+                    {id:5,pId:0,name:"运动户外",open:true},
+                    {id:6,pId:0,name:"食品饮料",open:true}
+                  ];
+      var zNodes2 = [];
+
+      $(document).ready(init);
+
+      function init(){
+        zTreeObj = $.fn.zTree.init($("#upProductLeft"), setting, zNodes);
+        zTreeObj2 = $.fn.zTree.init($("#upProductRight"), setting2, zNodes2);
+       //上架   获取#upProductLeft的高度，同时赋值给#upProductRight
+       var upProductLeftHeight = ($('#upProductLeft').height())+22;
+       $('#upProductRight').height(upProductLeftHeight);
+       $('#upProductLeft').height(upProductLeftHeight);
+       $('#moveMenuUp').height(upProductLeftHeight);
+       
+     //下架   获取#downProductLeft的高度，同时赋值给#downProductRight
+       var downProductLeftHeight = ($('#downProductLeft').height())+22;
+       $('#downProductRight').height(downProductLeftHeight);
+       $('#downProductLeft').height(downProductLeftHeight);
+       $('#moveMenuDown').height(downProductLeftHeight);
+      }
+
+      function click(event,treeId,treeNode){
+        current = treeNode;
+        flag = true;
+        console.log(current)
+      }
+   
+      function click2(event,treeId,treeNode){
+          current = treeNode;
+          flag = false;
+          console.log(current)
+        }
+      
+      function onremove(){
+        var parent = zTreeObj2.getNodesByParam("id",current?current.pId:0);
+        parent.length == 0 ? zTreeObj2.addNodes(null,current) : zTreeObj2.addNodes(parent[0],current);
+      }
+      function onremove2(){
+        var parent = zTreeObj.getNodesByParam("id",current?current.pId:0);
+           console.log(parent)
+        //parent.length == 0 ? zTreeObj.addNodes(null,current) : zTreeObj.addNodes(parent[0],current);
+      }
+
+			var three = false;
+      $("#toRight").click(function(){
+      	var data = [];
+      	//获取左侧被选中的节点
+      	var left = zTreeObj.getSelectedNodes();
+      	if(zTreeObj.transformToArray(left).length == 1){
+      		if(zTreeObj.transformToArray(left)[0].level == '2'){
+      			three = true;
+      		}
+      	}else{
+      		three = false;
+      	}
+        //获取右侧所有的节点
+        var right = zTreeObj2.getNodes();
+         var treeRight = $.fn.zTree.getZTreeObj("upProductRight");  
+				if(flag){
+					for(var i in zTreeObj2.transformToArray(right)){
+						for(var j in zTreeObj.transformToArray(left)){
+     					//console.log(zTreeObj2.transformToArray(left)[i].id);
+     					if(zTreeObj2.transformToArray(right)[i].id == zTreeObj.transformToArray(left)[j].id ){
+     						//alert("删除");
+     						data.push(zTreeObj2.transformToArray(right)[i]);
+     					}
+        		}
+
+        	} 
+        	for(var i in  data){
+        			treeRight.removeNode(data[i]);
+        	}
+      		if(three){
+      			  //移动节点
+      			  //1.获取左侧节点的父节点
+      			  var leftParent = left[0].getParentNode();
+      			  var node = zTreeObj2.getNodeByParam("id",leftParent.id);
+      			  if(node == null){
+      			  	onremove();
+      			  }else{
+      			  	if(node != null){
+      			  	//将节点添加下面
+      			  	var index = treeRight.getNodeIndex(node);
+       					zTreeObj2.addNodes(node,left[0]);
+      			  }
+      			  }
+      			  
+      			  
+      			// alert(node);
+      			//var node = left[0].getParentNode();
+      			//查找右侧是否有父节点 
+      			//var index = treeRight.getNodeIndex(node);
+      			//alert(index);
+      			
+      		}else{
+      			onremove();
+      		}
+      		
+        }
+      })
+
+      $("#toLeft").click(function(){
+        var b = zTreeObj2.getSelectedNodes();
+        var nodes = zTreeObj2.removeNode(b[0],onremove2);
+      }); 
+
+       
+       //上架   获取#upProductLeft的高度，同时赋值给#upProductRight
+       var upProductLeftHeight = ($('#upProductLeft').height())+22;
+       $('#upProductRight').height(upProductLeftHeight);
+       $('#moveMenuUp').height(upProductLeftHeight);
+       
+     //下架   获取#downProductLeft的高度，同时赋值给#downProductRight
+       var downProductLeftHeight = ($('#downProductLeft').height())+22;
+       $('#downProductRight').height(downProductLeftHeight);
+       $('#moveMenuDown').height(downProductLeftHeight);
+
+
+  })
+</script>
+</html>

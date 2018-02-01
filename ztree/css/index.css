@@ -1,0 +1,152 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.clearfix:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.wrap{
+	width: 650px;
+	margin: 0 auto;
+}
+
+.wrap .title{
+	background-color: #E6E6E8;
+}
+
+.wrap .search{
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+
+.wrap .search .keyword{
+	display: inline-block;
+}
+
+.wrap .search .way{
+	display: inline-block;
+	margin: 0 55px;
+}
+
+.wrap .search .queryBtn{
+	display: inline-block;
+}
+
+.wrap .search input[type=button]{
+	width: 80px;
+}
+
+/*主体功能*/
+.wrap .main{
+	width: 100%;
+	border: 1px solid orange;
+}
+
+.wrap .main .adminUser{
+	display: inline-block;
+}
+
+.wrap .main .userField{
+	float: right;
+}
+
+.wrap .main .content{
+	height: 500px;
+}
+
+.wrap .main .leftTree{
+	float: left;
+	width: 50%;
+	height: 100%;
+	border: 1px solid;
+	border-left: none; 
+	overflow-y: scroll;
+}
+
+.wrap .main .rightUser{
+	float: right;
+	width: 50%;
+	height: 100%;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+}
+
+.wrap .main .rightUser input{
+	width: 60px;
+}
+
+.wrap .main .editingArea{
+	float: left;
+	margin-left: 10px;
+}
+
+.wrap .main .userBox{
+	width: 200px;
+	height: 160px;
+	border: 1px solid;
+	overflow-y: scroll;
+}
+
+.wrap .main .operation{
+	float: left;
+	margin: 50px 0 0 25px;
+}
+
+.wrap .main .operation-sel{
+	float: left;
+	margin: 35px 0 0 25px;
+}
+
+.wrap .main .top input{
+	margin-bottom: 10px;
+}
+
+.wrap .main .bottom input{
+	margin-bottom: 10px;
+}
+
+.wrap .main .bottom{
+	margin-top: 100px;
+}
+
+.wrap .main .footer{
+	text-align: center;
+	margin: 10px 0;
+}
+
+.wrap .main .footer input{
+	width: 80px;
+} 
+
+/*选中变色*/
+.selected{
+	background-color: #ccc;
+}
+
+/* 弹框插件样式处理 */
+.jconfirm .jconfirm-holder{
+    width: 350px;
+    margin: 0 auto;
+}
+
+::-webkit-scrollbar-track-piece{
+    background-color:#FFFFFF;
+    -webkit-border-radius:0;
+}
+::-webkit-scrollbar{
+    width:0.025rem;
+    height:0.025rem;
+}
+::-webkit-scrollbar-thumb{
+    height:50px;
+    background-color:#FFFFFF;
+    -webkit-border-radius:4px;
+    outline:0.025rem solid #fff;
+    outline-offset:-0.025rem;
+    border: 0.025rem solid #fff;
+}

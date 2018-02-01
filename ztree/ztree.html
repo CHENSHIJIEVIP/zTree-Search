@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<HTML>
+
+<HEAD>
+    <TITLE> ZTREE DEMO </TITLE>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="js/plugs/jquery.min.js"></script>
+</HEAD>
+
+<BODY>
+    <div id="userInfo"></div>
+</BODY>
+
+    <SCRIPT LANGUAGE="JavaScript">
+    $(document).ready(function() {
+        $.getUrlParam = function (name) {  
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");  
+            var res = window.location.search.substr(1).match(reg);  
+            if (res != null) return unescape(res[2]); return null;  
+        }
+        console.log($.getUrlParam('name'));
+        $("#userInfo").text($.getUrlParam('name'));
+    });
+    </SCRIPT>
+    
+</HTML>
